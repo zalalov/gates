@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+#  front-end:
+#    container_name: front-end
+#    build:
+#      context: .
+#      dockerfile: ./front-end/Dockerfile
+#    networks:
+#      - app
+
+  back-end:
+    container_name: back-end
+    build: ./back-end
+    environment:
+      - SERVER_HOST: '0.0.0.0'
+      - SERVER_PORT: '5000'
+    restart: unless-stopped
+    networks:
+      - app
+
+networks:
+    app:
+      driver: bridge
