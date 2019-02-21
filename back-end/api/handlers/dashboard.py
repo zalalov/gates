@@ -14,8 +14,10 @@ class DashboardHandler(web.RequestHandler):
                 # the server and do not eat to much RAM
                 while True:
                     chunk = f.read(config.FILE_CHUNK_SIZE)
+
                     if not chunk:
                         break
+
                     try:
                         self.write(chunk) # write the cunk to response
                         await self.flush() # flush the current chunk to socket
