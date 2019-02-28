@@ -62,6 +62,13 @@ body * {
 .dashboard > .error-stats > .percentage > .percentage-item {
     display: flex;
     flex-basis: 100%;
+    justify-content: center;
+}
+.dashboard > .error-stats > .percentage > .percentage-item:first-child {
+    justify-content: flex-start;
+}
+.dashboard > .error-stats > .percentage > .percentage-item:last-child {
+    justify-content: flex-end;
 }
 .dashboard > .error-stats > .percentage > .percentage-item > .status {
     flex-basis: 8%;
@@ -74,9 +81,7 @@ body * {
     height: 10px;
     border-radius: 5px;
 }
-.dashboard > .error-stats > .percentage > .percentage-item > .info {
-    flex-basis: 92%;
-}
+.dashboard > .error-stats > .percentage > .percentage-item > .info {}
 .dashboard > .error-stats > .percentage > .percentage-item > .info > .additional {
     color: #A0B0B9;
     font-size: 0.7em;
