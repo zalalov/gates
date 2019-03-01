@@ -146,4 +146,33 @@ body * {
     flex-basis: 90%;
 }
 
-.dashboard .traffic-flow {}
+.dashboard > .traffic-flow {
+    flex-direction: column;
+    margin-top: 7%;
+}
+.dashboard > .traffic-flow {
+    flex-direction: column;
+    margin-top: 7%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item {
+    padding-top: 4%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .flow {
+    flex-direction: column;
+    flex-basis: 11%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info {
+    flex-basis: 89%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item:not(:last-child) > .info {
+    border-bottom: 1px solid #EFF1F4;
+}
+
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .history {
+    flex-direction: column;
+    flex-basis: 45%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .details {
+    flex-direction: column;
+    flex-basis: 45%;
+}
