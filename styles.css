@@ -6,6 +6,12 @@ body * {
 .flex {
     display: flex;
 }
+.bold {
+    font-weight: bold;
+}
+.gray-font * {
+    color: #A0B0B9;
+}
 
 #container {
     position: relative;
@@ -13,7 +19,7 @@ body * {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
+    min-height: 150%;
 }
 
 .dashboard {
@@ -27,7 +33,6 @@ body * {
 .dashboard > .title {
     font-size: 1.4em;
     font-style: normal;
-    font-weight: 600;
     line-height: 28px;
 }
 .dashboard > .tabs {
@@ -85,9 +90,7 @@ body * {
     height: 10px;
     border-radius: 5px;
 }
-.dashboard > .error-stats > .percentage > .percentage-item > .info {}
 .dashboard > .error-stats > .percentage > .percentage-item > .info > .additional {
-    color: #A0B0B9;
     font-size: 0.7em;
 }
 .dashboard > .error-stats > .bar {
@@ -131,7 +134,6 @@ body * {
 .dashboard > .error-stats > .legend > .legend-part {
     width: 100%;
     font-size: 0.75em;
-    font-weight: 600;
 }
 .dashboard > .error-stats > .legend > .legend-part > .marker {
     padding-top: 3%;
@@ -150,10 +152,6 @@ body * {
     flex-direction: column;
     margin-top: 7%;
 }
-.dashboard > .traffic-flow {
-    flex-direction: column;
-    margin-top: 7%;
-}
 .dashboard > .traffic-flow > .traffic-flow-item {
     padding-top: 4%;
 }
@@ -168,11 +166,39 @@ body * {
     border-bottom: 1px solid #EFF1F4;
 }
 
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .history .value {
+    font-size: 1.2em;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .history .date {
+    font-size: 0.7em;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .history > .name {
+    margin-bottom: 5%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .history > .current {
+    margin-bottom: 2%;
+}
 .dashboard > .traffic-flow > .traffic-flow-item > .info > .history {
     flex-direction: column;
-    flex-basis: 45%;
+    flex-basis: 35%;
 }
 .dashboard > .traffic-flow > .traffic-flow-item > .info > .details {
     flex-direction: column;
-    flex-basis: 45%;
+    flex-basis: 65%;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .details > .info {
+    font-weight: bold;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .details > .info > span {
+    padding-bottom: 0.2em;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .details > .description {
+    font-size: 0.7em;
+    color: #A0B0B9;
+    margin-bottom: 0.5em;
+}
+.dashboard > .traffic-flow > .traffic-flow-item > .info > .details > .help {
+    font-size: 0.7em;
 }
