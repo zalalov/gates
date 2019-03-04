@@ -6,8 +6,6 @@ import json
 
 class DashboardHandler(web.RequestHandler):
     async def get(self):
-        print(os.getcwd())
-
         if os.path.exists(config.DASHBOARD_INFO_PATH):
             with open(config.DASHBOARD_INFO_PATH, 'r') as f:
                 # In case if file is big enough - do not block
