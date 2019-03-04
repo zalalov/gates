@@ -5,6 +5,12 @@ import json
 
 
 class DashboardHandler(web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header('Content-Type', 'application/json')
+
     async def get(self):
         if os.path.exists(config.DASHBOARD_INFO_PATH):
             with open(config.DASHBOARD_INFO_PATH, 'r') as f:
@@ -36,3 +42,8 @@ class DashboardHandler(web.RequestHandler):
             self.write(json.dumps({
                 'error': 'Dashboard info not found.'
             }))
+
+    async def options(self):
+        # no body
+        self.set_status(204)
+        self.finish()
