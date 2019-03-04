@@ -3,15 +3,24 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import ErrorStats from "./ErrorStats";
 import TrafficFlow from "./TrafficFlow";
+import { BeatLoader } from 'react-spinners';
 
 class Dashboard extends Component {
   constructor(props) {
     super();
+
+    this.state = {
+      loaded: false
+    };
   }
 
   componentWillMount() {}
 
-  render() {
+  renderDashboard() {
+    if (!this.state.loaded) {
+      return <BeatLoader/>;
+    }
+
     return (
       <div className="dashboard">
         <div className="title bold">
@@ -43,6 +52,10 @@ class Dashboard extends Component {
         <TrafficFlow />
       </div>
     );
+  }
+
+  render() {
+    return this.renderDashboard();
   }
 }
 
