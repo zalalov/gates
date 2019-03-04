@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 class PercentStats extends Component {
   renderItem(key, value, additional) {
     return (
-      <div className="flex percentage-item">
+      <div key={key} className="flex percentage-item">
         <div className="flex status success">
-          <span className="circle"></span>
+          <span className="circle">&nbsp;</span>
         </div>
         <div className="info">
           <div className="value bold">{value}</div>
@@ -18,7 +18,7 @@ class PercentStats extends Component {
   render() {
     return (
       <div className="flex percentage">
-        {this.props.items.map(item => this.renderItem('123123', item.value, item.additional))}
+        {this.props.items.map((item, index) => this.renderItem(index, item.value, item.additional))}
       </div>
     );
   }

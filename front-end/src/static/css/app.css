@@ -45,7 +45,7 @@ body * {
 .dashboard .tabs {
     min-height: 32px;
     width: auto;
-    margin-top: 4%;
+    margin: 3% 0 6% 0;
     padding: 0;
 }
 .dashboard .tabs .react-tabs__tab {
@@ -70,7 +70,7 @@ body * {
     border-radius: 0;
 }
 .dashboard .error-stats {
-    margin: 2em 0;
+    margin-bottom: 2em;
     flex-flow: column;
 }
 .error-stats .percentage {
@@ -119,32 +119,18 @@ body * {
 .error-stats .bar .bar-part {
     margin-right: 1px;
 }
-.error-stats .bar > .part-1,
-.error-stats .legend > .part-1 > .marker > span {
-    background-color: #FFCC00;
-}
-.error-stats .bar > .part-2,
-.error-stats .legend > .part-2 > .marker > span {
-    background-color: #5856D5;
-}
-.error-stats .bar > .part-3,
-.error-stats .legend > .part-3 > .marker > span {
-    background-color: #2196F3;
-}
-.error-stats .bar > .part-4,
-.error-stats .legend > .part-4 > .marker > span {
-    background-color: #A0B0B9;
-}
 .error-stats .legend {
     display: flex;
 }
 .error-stats .legend > .legend-part {
-    width: 100%;
     font-size: 0.75em;
 }
+.error-stats .legend > .legend-part:not(:last-child){
+    margin-right: 3%;
+}
 .error-stats .legend > .legend-part > .marker {
-    padding-top: 3%;
-    flex-basis: 10%;
+    padding-top: 4px;
+    width: 15px;
 }
 .error-stats .legend > .legend-part > .marker > span {
     width: 10px;
@@ -157,9 +143,8 @@ body * {
 
 .traffic-flow {
     flex-direction: column;
-    margin-top: 7%;
 }
-.traffic-flow > .traffic-flow-item {
+.traffic-flow > .traffic-flow-item:not(:first-child) {
     padding-top: 4%;
 }
 .traffic-flow > .traffic-flow-item > .flow {

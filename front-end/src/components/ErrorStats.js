@@ -10,29 +10,69 @@ class ErrorStats extends Component {
     '#2196F3',
     '#A0B0B9'
   ];
+  static errorCountLimit = 4;
+
+  noData() {
+    return !(this.getPercentItems().length && this.getBarItems().length && this.getLegendItems().length);
+  }
+
+  getPercentItems() {
+    if (!this.props.data.errors_percent && !this.props.data.zeroes_percent && !this.props.data.timeout_percent) {
+      return [];
+    }
+
+    const {errors_percent, zeroes_percent, timeout_percent} = this.props.data;
+
+    return [
+      {
+        value: errors_percent ? `Errors: ${errors_percent.toFixed(2)}%` : 'Errors: N/A',
+        // Have no idea what average means, guys, will keep it as it as in template
+        additional: 'Average: 0.11%'
+      },
+      {
+        value: zeroes_percent ? `Zeroes: ${zeroes_percent.toFixed(2)}%` : `Zeroes: N/A`,
+        // Have no idea what average means, guys, will keep it as it as in template
+        additional: 'Average: 0.11%'
+      },
+      {
+        value: timeout_percent ? `Timeouts: ${timeout_percent.toFixed(2)}%` : 'Timeouts: N/A',
+        // Have no idea what average means, guys, will keep it as it as in template
+        additional: 'Average: 0.11%'
+      }
+    ];
+  }
+
+  getBarItems() {
+    const totalErrorsCount = this.props.data.errors.reduce((acc, error) => acc + error.count, 0);
+    // TODO: possible improvement, increase number of colors above and slice more errors
+    return this.props.data.errors.slice(0, ErrorStats.errorCountLimit).map((error, index) => {
+      return {
+        value: error.count / totalErrorsCount * 100,
+        color: ErrorStats.COLORS[index]
+      };
+    });
+  }
+
+  getLegendItems() {
+    return this.props.data.errors.slice(0, ErrorStats.errorCountLimit).map((error, index) => {
+      return {
+        text: error.code ? `Error ${error.code}: ${error.count}` : `Other: ${error.count}`,
+        color: ErrorStats.COLORS[index]
+      }
+    });
+  }
 
   render() {
+    const percentItems = this.getPercentItems();
+    const barItems = this.getBarItems();
+    const legendItems = this.getLegendItems();
+
     return (
+      !this.noData() &&
       <div className="flex error-stats">
-        <PercentStats items={[
-          {value: 'Errors: 0.12%', additional: 'Average: 0.11%'},
-          {value: 'Zeroes: 5.12%', additional: 'Average: 0.11%'},
-          {value: 'Timeouts: 0.12%', additional: 'Average: 0.11%'}
-        ]} />
-
-        <Bar parts={[
-          {value: 15, color: ErrorStats.COLORS[0]},
-          {value: 40, color: ErrorStats.COLORS[1]},
-          {value: 35, color: ErrorStats.COLORS[2]},
-          {value: 10, color: ErrorStats.COLORS[3]},
-        ]}/>
-
-        <Legend parts={[
-          {text: "Error 500: 1 256", color: ErrorStats.COLORS[0]},
-          {text: "Error 501: 800", color: ErrorStats.COLORS[1]},
-          {text: "Error 502: 650", color: ErrorStats.COLORS[2]},
-          {text: "Other: 330", color: ErrorStats.COLORS[3]},
-        ]} />
+        {!!percentItems.length && <PercentStats items={this.getPercentItems()}/>}
+        {!!barItems.length && <Bar items={this.getBarItems()}/>}
+        {!!legendItems.length && <Legend items={this.getLegendItems()}/>}
       </div>
     );
   }

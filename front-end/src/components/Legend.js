@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class Legend extends Component {
   renderPart(key, text, color) {
     return (
-      <div className="flex legend-part bold">
+      <div key={key} className="flex legend-part bold">
         <div className="flex marker">
           <span style={{backgroundColor: color}}>&nbsp;</span>
         </div>
@@ -16,7 +16,7 @@ class Legend extends Component {
   render() {
     return (
       <div className="flex legend">
-        {this.props.parts.map(part => this.renderPart('123123', part.text, part.color))}
+        {this.props.items.map((part, index) => this.renderPart(index, part.text, part.color))}
       </div>
     );
   }

@@ -23,7 +23,7 @@ class TrafficFlowItem extends Component {
           </div>
           <div className="flex details">
             <div className="info flex bold">
-              {this.props.details.map(detail => <span key="123123">{detail}</span>)}
+              {this.props.details.map((detail, index) => <span key={index}>{detail}</span>)}
             </div>
             <div className="description gray-font">{this.props.description}</div>
             <div className="help">{this.props.help}</div>

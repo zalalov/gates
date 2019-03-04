@@ -17,7 +17,7 @@ class Bar extends Component {
     return (
       <div>
         <div className="flex bar">
-          {this.props.parts.map(part => this.renderPart('123123', part.value, part.color))}
+          {this.props.items.map((part, index) => this.renderPart(index, part.value, part.color))}
         </div>
       </div>
     );

@@ -23,7 +23,7 @@ class TrafficFlow extends Component {
     );
 
     return (
-      <div class="flex traffic-flow">
+      <div className="flex traffic-flow">
         <TrafficFlowItem iconSrc={FilterIcon}
                          flowArrow={true}
                          name="Searches"
