@@ -8,7 +8,7 @@ from api.handlers.dashboard import DashboardHandler
 def make_app():
     return tornado.web.Application([
         (r"/api/dashboard", DashboardHandler),
-        (r"/(.*)", tornado.web.StaticFileHandler, {"path": "/dist"}),
+        (r"/(.*)", tornado.web.StaticFileHandler, {"path": "/dist", "default_filename": "index.html"}),
     ])
 
 

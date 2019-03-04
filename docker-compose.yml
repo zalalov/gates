@@ -26,7 +26,6 @@ services:
   front-end:
     container_name: front-end
     build: ./front-end
-    command: tail -f /dev/null
     volumes:
       - dist:/app/build
     networks:
