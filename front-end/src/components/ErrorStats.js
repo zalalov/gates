@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Bar from './Bar';
 import Legend from './Legend';
 import PercentStats from './PercentStats';
+import {formatNumber} from "../utils";
 
 class ErrorStats extends Component {
   static COLORS = [
@@ -25,17 +27,17 @@ class ErrorStats extends Component {
 
     return [
       {
-        value: errors_percent ? `Errors: ${errors_percent.toFixed(2)}%` : 'Errors: N/A',
+        value: `Errors: ${formatNumber(errors_percent, '%')}`,
         // Have no idea what average means, guys, will keep it as it as in template
         additional: 'Average: 0.11%'
       },
       {
-        value: zeroes_percent ? `Zeroes: ${zeroes_percent.toFixed(2)}%` : `Zeroes: N/A`,
+        value: `Zeroes: ${formatNumber(zeroes_percent, '%')}`,
         // Have no idea what average means, guys, will keep it as it as in template
         additional: 'Average: 0.11%'
       },
       {
-        value: timeout_percent ? `Timeouts: ${timeout_percent.toFixed(2)}%` : 'Timeouts: N/A',
+        value: `Timeouts: ${formatNumber(timeout_percent, '%')}`,
         // Have no idea what average means, guys, will keep it as it as in template
         additional: 'Average: 0.11%'
       }
@@ -56,7 +58,7 @@ class ErrorStats extends Component {
   getLegendItems() {
     return this.props.data.errors.slice(0, ErrorStats.errorCountLimit).map((error, index) => {
       return {
-        text: error.code ? `Error ${error.code}: ${error.count}` : `Other: ${error.count}`,
+        text: error.code ? `Error ${error.code}: ${formatNumber(error.count)}` : `Other: ${formatNumber(error.count)}`,
         color: ErrorStats.COLORS[index]
       }
     });
@@ -77,5 +79,9 @@ class ErrorStats extends Component {
     );
   }
 }
+
+ErrorStats.propTypes = {
+  data: PropTypes.object.isRequired
+};
 
 export default ErrorStats;

@@ -151,6 +151,13 @@ body * {
     flex-direction: column;
     flex-basis: 11%;
 }
+.traffic-flow > .traffic-flow-item > .flow > .icon,
+.traffic-flow > .traffic-flow-item > .flow > .arrow-flow {
+    flex-direction: column;
+}
+.traffic-flow > .traffic-flow-item > .flow > .arrow-flow {
+    margin-top: 10%;
+}
 .traffic-flow > .traffic-flow-item > .info {
     flex-basis: 89%;
 }
@@ -167,6 +174,26 @@ body * {
 }
 .traffic-flow > .traffic-flow-item > .info > .history > .name {
     margin-bottom: 5%;
+    align-items: center;
+}
+.traffic-flow > .traffic-flow-item > .info > .history > .name.fail {
+    color: #FF6A67;
+}
+.traffic-flow > .traffic-flow-item > .info > .history > .name > .diff {
+    border-radius: 10px;
+    font-size: 0.8em;
+    width: 20%;
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+    font-weight: normal;
+    height: 1.5em;
+}
+.traffic-flow > .traffic-flow-item > .info > .history > .name > .diff.success {
+    background-color: #8BC34A;
+}
+.traffic-flow > .traffic-flow-item > .info > .history > .name > .diff.fail {
+    background-color: #FF6A67;
 }
 .traffic-flow > .traffic-flow-item > .info > .history > .current {
     margin-bottom: 2%;
@@ -184,6 +211,9 @@ body * {
     flex-direction: column;
     margin-bottom: 0.5em;
 }
+.traffic-flow > .traffic-flow-item > .info > .details > .info.fail > span {
+    color: #FF6A67;
+}
 .traffic-flow > .traffic-flow-item > .info > .details > .info > span {
     padding-bottom: 0.2em;
 }
@@ -194,4 +224,7 @@ body * {
 }
 .traffic-flow > .traffic-flow-item > .info > .details > .help {
     font-size: 0.7em;
+}
+.traffic-flow .traffic-flow-item .info > .details > .help a {
+    color: #1E90FF;
 }

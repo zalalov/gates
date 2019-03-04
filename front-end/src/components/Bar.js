@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 class Bar extends Component {
-  renderPart(key, value, color) {
+  renderItem(key, value, color) {
     let styles = {
       width: `${value}%`,
       backgroundColor: color
@@ -17,11 +18,15 @@ class Bar extends Component {
     return (
       <div>
         <div className="flex bar">
-          {this.props.items.map((part, index) => this.renderPart(index, part.value, part.color))}
+          {this.props.items.map((part, index) => this.renderItem(index, part.value, part.color))}
         </div>
       </div>
     );
   }
 }
+
+Bar.propTypes = {
+  items: PropTypes.array.isRequired
+};
 
 export default Bar;

@@ -70,6 +70,8 @@ class Dashboard extends Component {
       bookingsPrevious: this.state.stats['data'][0][`bookings_previous${postfix}`],
       averagePrice: this.state.stats['data'][0][`avg_price${postfix}`],
       str: this.state.stats['data'][0][`str${postfix}`],
+      mobile: this.state.stats['data'][0]['mobile_pessimizer'],
+      web: this.state.stats['data'][0]['web_pessimizer'],
     };
   }
 
@@ -110,19 +112,21 @@ class Dashboard extends Component {
 
           <TabPanel>
             <ErrorStats data={this.getLastHourData()}/>
+            <TrafficFlow data={this.getLastHourData()}/>
           </TabPanel>
           <TabPanel>
             <ErrorStats data={this.getTodayData()}/>
+            <TrafficFlow data={this.getTodayData()}/>
           </TabPanel>
           <TabPanel>
             <ErrorStats data={this.getYesterdayData()}/>
+            <TrafficFlow data={this.getYesterdayData()}/>
           </TabPanel>
           <TabPanel>
             <ErrorStats data={this.getLastThreeDaysData()}/>
+            <TrafficFlow data={this.getLastThreeDaysData()}/>
           </TabPanel>
         </Tabs>
-
-        <TrafficFlow/>
       </div>
     );
   }

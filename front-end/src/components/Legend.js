@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 
 class Legend extends Component {
-  renderPart(key, text, color) {
+  renderItem(key, text, color) {
     return (
       <div key={key} className="flex legend-part bold">
         <div className="flex marker">
@@ -16,10 +17,14 @@ class Legend extends Component {
   render() {
     return (
       <div className="flex legend">
-        {this.props.items.map((part, index) => this.renderPart(index, part.text, part.color))}
+        {this.props.items.map((part, index) => this.renderItem(index, part.text, part.color))}
       </div>
     );
   }
 }
+
+Legend.propTypes = {
+  items: PropTypes.array.isRequired
+};
 
 export default Legend;

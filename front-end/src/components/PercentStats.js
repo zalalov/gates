@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class PercentStats extends Component {
   renderItem(key, value, additional) {
@@ -23,5 +24,9 @@ class PercentStats extends Component {
     );
   }
 }
+
+PercentStats.propTypes = {
+  items: PropTypes.array.isRequired
+};
 
 export default PercentStats;
